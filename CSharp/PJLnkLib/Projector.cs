@@ -119,8 +119,6 @@ namespace PJLink
 							}
 						}
 						r += mvarReader.ReadFixedLengthString (2);
-					
-						bool b = (mvarClient.Available > 0);
 						return true;
 					}
 					default:
@@ -195,11 +193,11 @@ namespace PJLink
 				Console.WriteLine ("pjlink: sending a/v mute request " + value.ToString() );
 				if (value)
 				{
-					Send (new Request("AVMT", "31"));
+					Response resp = Send (new Request("AVMT", "31"));
 				}
 				else
 				{
-					Send (new Request("AVMT", "30"));
+					Response resp = Send (new Request("AVMT", "30"));
 				}
 			}
 		}
